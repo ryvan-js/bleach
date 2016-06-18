@@ -56,81 +56,77 @@
 					return _;
 		   	};
 
-		   	_.properties = {
-
-		   	
-		   
+		   	_.methods = {
 
 
+			   	svgFilter : function (width,height,src){
 
-		   	svgFilter : function (width,height,src){
+			   						var deviation = (height/100) * 22;
+			   						
+									return  '<svg xmlns="http://www.w3.org/2000/svg"\
+										 	xmlns:xlink="http://www.w3.org/1999/xlink"\
+											width="'+width+'" height="'+height+'"\
+											viewBox="0 0 '+width+' '+height+'">\
+											<filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">\
+											<feGaussianBlur stdDeviation="'+deviation+'" edgeMode="duplicate" />\
+											<feComponentTransfer>\
+											<feFuncA type="discrete" tableValues="1 1" />\
+											</feComponentTransfer>\
+											</filter>\
+											<image filter="url(#blur)" xlink:href="'+src+'" x="0" y="0" height="'+height+'px" width="'+width+'px"/>\
+											</svg>'
+								},
 
-		   						var deviation = (height/100) * 22;
-		   						console.log(deviation);
-								return  '<svg xmlns="http://www.w3.org/2000/svg"\
-									 	xmlns:xlink="http://www.w3.org/1999/xlink"\
-										width="'+width+'" height="'+height+'"\
-										viewBox="0 0 '+width+' '+height+'">\
-										<filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">\
-										<feGaussianBlur stdDeviation="'+deviation+'" edgeMode="duplicate" />\
-										<feComponentTransfer>\
-										<feFuncA type="discrete" tableValues="1 1" />\
-										</feComponentTransfer>\
-										</filter>\
-										<image filter="url(#blur)" xlink:href="'+src+'" x="0" y="0" height="'+height+'px" width="'+width+'px"/>\
-										</svg>'
-							},
+			    encodedSvg : function(svg_filter){ return encodeURIComponent(svg_filter)},
 
-		    encodedSvg : function(svg_filter){ return encodeURIComponent(svg_filter)},
+			    fetchRealImage : function(element,src,opt){
+					    			 var request = new XMLHttpRequest();
+					    			 var loader = new circleLoader(element,opt); // initialize circleLoader
 
-		    fetchRealImage : function(element,src,opt){
-				    			 var request = new XMLHttpRequest();
-				    			 var loader = new circleLoader(element,opt); // initialize circleLoader
+					    			 request.open('GET',src,true);
 
-				    			 request.open('GET',src,true);
+					    			 request.responseType = "blob";
 
-				    			 request.responseType = "blob";
+					 
 
-				 
-
-				    			 request.onloadstart = function (){	
-				    			 		loader.load(0/100); //default value for start
-				    			 }
+					    			 request.onloadstart = function (){	
+					    			 		loader.load(0/100); //default value for start
+					    			 }
 
 
-				    			 request.onprogress = function(e){
-				    			 	if(e.lengthComputable){
-				    			 		loader.load(e.loaded/e.total);
-				    			 	}
-				    			 }
+					    			 request.onprogress = function(e){
+					    			 	if(e.lengthComputable){
+					    			 		loader.load(e.loaded/e.total);
+					    			 	}
+					    			 }
 
-				    			 request.onloadend = function(e){
-							    			 	loader.load(e.loaded/e.total);
+					    			 request.onloadend = function(e){
+								    			 	loader.load(e.loaded/e.total);
 
-							    			 	var reader = new FileReader();
+								    			 	var reader = new FileReader();
 
-							    			 	reader.readAsDataURL(this.response);
-							    			 	reader.onload = function(){
-							    			 		loader.destroy();
-							    			  		$(element).css('background-image','url('+reader.result+')');
-							    			  	}
-							     }
+								    			 	reader.readAsDataURL(this.response);
+								    			 	reader.onload = function(){
+								    			 		loader.destroy();
+								    			  		$(element).css('background-image','url('+reader.result+')');
+								    			  	}
+								     }
 
-				    			 request.onreadystatechange = function() {
-								    if (request.readyState == 4 && request.status == 404)
-								        	$(element).addClass("broken");  
-								 };
+					    			 request.onreadystatechange = function() {
+									    if (request.readyState == 4 && request.status == 404)
+									        	$(element).addClass("broken");  
+									 };
 
-								
-			    			 	request.send();
-		   				}
+									
+				    			 	request.send();
+			   				}
 
-		    };
+			    };
 
-		    _.assets = $.extend({},_.properties);
+		    _.methods = $.extend({},_.methods);
 		   
 		    _.readIMG = function (properties,opt){
-		    	var _assets = _.assets;
+		    	var _method = _.methods;
 		    	var http = new XMLHttpRequest();
 		    	var file = new FileReader(),encoded_image;
 		    	var imgframe = properties.element;
@@ -146,9 +142,9 @@
 
 				 	file.onloadend = function() {
 				 	   encoded_image = file.result;
-					   encoded_svg = _assets.encodedSvg(_assets.svgFilter(properties.width,properties.height,encoded_image));
+					   encoded_svg = _method.encodedSvg(_method.svgFilter(properties.width,properties.height,encoded_image));
 					   imgframe.css('background-image',"url('data:image/svg+xml;charset=utf-8,"+encoded_svg+"')");
-					   _assets.fetchRealImage(imgframe, properties.src,opt);
+					   _method.fetchRealImage(imgframe, properties.src,opt);
 					  
 					}
 
@@ -161,7 +157,6 @@
 		}();
 
 		var init = function(properties,opt){
-			console.log('init running...');
 			Components.readIMG(properties,opt);
 		}
 
@@ -170,7 +165,6 @@
 
 
 	$.bleach = function(opt){
-		console.log('plugin code...');
 		var opt = $.extend( {}, $.bleach.defaults, opt );
 		
 		$('.bleach').each(function(i,_elem_){
