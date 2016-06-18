@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<meta name='viewport' content='width=device-width,scale=1.0'>
+<meta name='author' content='ryvan prabhu'>
+<link href='bower_components/bootstrap/dist/css/bootstrap.css' rel='stylesheet'>
+<link href='dist/css/bleach.css' rel='stylesheet'>
+<link href='demo/dog.jpg' rel='shorcut icon' type=text>
+<script type="text/javascript" src='bower_components/jquery/dist/jquery.js' ></script>
+<script type="text/javascript" src='src/js/bleach.js' ></script>
+<head>
+	<title>Bleach Image Loader</title>
+</head>
+<style>
+
+body{
+	background-color: rgba(78, 64, 38, 0.78);
+}
+
+.img-container{
+	display: inline-block;
+	border: thin solid #ccc;
+	border-radius: 8px;
+	box-shadow: 1px 1px 5px #000;
+	position: relative;
+	padding: 7px;
+	max-width: 220px;min-width: 200px;
+	background-color: #fff;
+}
+
+.img-container img{
+	max-width:100%;
+	height:auto;
+	float:left;
+	position: relative;
+	border-radius: 8px;
+	vertical-align: middle;
+}
+
+.sample_blur{
+	height:200px;
+	width:200px;
+	background-size: cover;
+	 
+	display: block;
+}
+
+.bleach{
+	border: thin solid #ccc;
+	border-radius: 8px;
+	box-shadow: 1px 1px 5px #000;
+}
+</style>
+<body>
+<div class='container' style="width:70%;margin:auto">
+	<div class'row'>
+	<h2>Bleach Image Loader</h2>
+	</div>
+	<div class'row'>
+	<div class'col-md-12'>
+		<div class='bleach' bl-width='400' bl-height='400' bl-src='demo/dog_1.jpg' id='1'></div>
+		<div class='bleach' bl-width='400' bl-height='400' bl-src='demo/dog_2.jpg' id='2'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_3.jpg' id='3'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_4.jpg' id='4'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_5.png' id='5'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_6.jpg' id='6'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_7.jpg' id='7'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_8.jpg' id='8'></div>
+		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_9.jpg' id='9'></div>
+	</div>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+	$.bleach({loaderColor:'#2ecff7'});
+});
+</script>
+
+</body>
+</html>

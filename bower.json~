@@ -1,0 +1,20 @@
+{
+  "name": "bleach",
+  "description": "Bleach Image Loader,Preload gaussian blured version of an image while waiting for original image.",
+  "main": "index.html",
+  "authors": [
+    "Ryvan Prabhu"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "image",
+    "loader",
+    "bleach",
+    "loader"
+  ],
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.0.0"
+  }
+}
