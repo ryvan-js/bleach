@@ -62,7 +62,7 @@
 			   	svgFilter : function (width,height,src){
 
 			   						var deviation = (height/100) * 22;
-			   						
+
 									return  '<svg xmlns="http://www.w3.org/2000/svg"\
 										 	xmlns:xlink="http://www.w3.org/1999/xlink"\
 											width="'+width+'" height="'+height+'"\
@@ -126,6 +126,7 @@
 		    _.methods = $.extend({},_.methods);
 		   
 		    _.readIMG = function (properties,opt){
+
 		    	var _method = _.methods;
 		    	var http = new XMLHttpRequest();
 		    	var file = new FileReader(),encoded_image;
@@ -133,7 +134,7 @@
 
 		    	imgframe.css({"width":properties.width+"px","height":properties.height+"px"});
 
-				http.open("GET","resize.php?file="+properties.src,true);
+				http.open("GET",opt.resizer+"resize.php?file="+properties.src,true);
 				http.responseType = "blob";
 
 				http.onload = function() {
@@ -182,7 +183,8 @@
 
 	$.bleach.defaults = {
 		loaderColor:'#92d367',
-		bgColor:'#fff'
+		bgColor:'#fff',
+		resizer:""
 	} 
 
 }));

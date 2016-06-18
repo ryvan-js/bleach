@@ -16,6 +16,12 @@ body{
 	background-color: rgba(78, 64, 38, 0.78);
 }
 
+h2{
+	color: white;
+    font-family: Open Sans,sans-serif;
+    font-size: 32px;
+}
+
 .img-container{
 	display: inline-block;
 	border: thin solid #ccc;
@@ -53,7 +59,7 @@ body{
 <body>
 <div class='container' style="width:70%;margin:auto">
 	<div class'row'>
-	<h2>Bleach Image Loader</h2>
+	<h2>Bleach Image Loader Demo</h2>
 	</div>
 	<div class'row'>
 	<div class'col-md-12'>
@@ -67,13 +73,18 @@ body{
 		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_8.jpg' id='8'></div>
 		<div class='bleach' bl-width='200' bl-height='200' bl-src='demo/dog_9.jpg' id='9'></div>
 	</div>
+	<h2>By Ryvan Prabhu</h2>
 	</div>
+
 </div>
 
 
 <script>
 $(function(){
-	$.bleach({loaderColor:'#2ecff7'});
+	$.bleach({
+		loaderColor:'#2ecff7',
+		resizer:'./'
+	});
 });
 </script>
 
