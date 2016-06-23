@@ -1,3 +1,19 @@
+
+/*
+
+ ____  __    ____   __    ___  _  _       
+(  _ \(  )  (  __) / _\  / __)/ )( \      
+ ) _ (/ (_/\ ) _) /    \( (__ ) __ (      
+(____/\____/(____)\_/\_/ \___)\_)(_/      
+
+
+$ Bleach 1.0
+$ Author:Ryvan Prabhu
+$ Licence:MIT
+$
+
+*/
+
 (function(factory) {
     
     if (typeof define === 'function' && define.amd) {
