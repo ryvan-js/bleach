@@ -1,6 +1,8 @@
 # bleach
 An awesome html image loader inspired by whatsapp image loader.
 
+![Bleach Screenshot](http://i.imgur.com/uhaLVLo.png)
+
 ####Dependencies
 - jquery: >=1.10.2
 - PHP: >= 5.2.6
@@ -9,7 +11,7 @@ An awesome html image loader inspired by whatsapp image loader.
 
 ```sh
 # Bower
-bower install --save illegal-validator
+bower install --save bleach
 
 ```
 
