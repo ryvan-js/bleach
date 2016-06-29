@@ -50,23 +50,23 @@ $
 								  circle.fill();
 
 						   		_.load = function(current) {
-											var ctx = bg.getContext('2d');
-											var imd = null;
-											var circ = Math.PI * 2;
-											var quart = Math.PI / 2;
+										var ctx = bg.getContext('2d');
+										var imd = null;
+										var circ = Math.PI * 2;
+										var quart = Math.PI / 2;
 
-											ctx.beginPath();
-											ctx.strokeStyle = opt.loaderColor;
-											ctx.lineCap = 'round';
-											ctx.closePath();
-											ctx.fill();
-											ctx.lineWidth = 10.0;
+										ctx.beginPath();
+										ctx.strokeStyle = opt.loaderColor;
+										ctx.lineCap = 'round';
+										ctx.closePath();
+										ctx.fill();
+										ctx.lineWidth = 10.0;
 
-											imd = ctx.getImageData(0, 0, 60, 60);
-										    ctx.putImageData(imd, 0, 0);
-										    ctx.beginPath();
-										    ctx.arc(60, 60, 35, -(quart), ((circ) * current) - quart, false);
-										    ctx.stroke();
+										imd = ctx.getImageData(0, 0, 60, 60);
+										ctx.putImageData(imd, 0, 0);
+										ctx.beginPath();
+										ctx.arc(60, 60, 35, -(quart), ((circ) * current) - quart, false);
+										ctx.stroke();
 								_.destroy = function(){ $(elem).find('canvas').remove() }
 							   	}
 					return _;
@@ -82,7 +82,6 @@ $
 		   	svgFilter : function (width,height,src){
 
 		   						var deviation = (height/100) * 22;
-		   						console.log(deviation);
 								return  '<svg xmlns="http://www.w3.org/2000/svg"\
 									 	xmlns:xlink="http://www.w3.org/1999/xlink"\
 										width="'+width+'" height="'+height+'"\
@@ -177,7 +176,6 @@ $
 		}();
 
 		var init = function(properties,opt){
-			console.log('init running...');
 			Components.readIMG(properties,opt);
 		}
 
@@ -186,7 +184,6 @@ $
 
 
 	$.bleach = function(opt){
-		console.log('plugin code...');
 		var opt = $.extend( {}, $.bleach.defaults, opt );
 		
 		$('.bleach').each(function(i,_elem_){
