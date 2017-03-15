@@ -3,7 +3,7 @@ An awesome html image loader inspired by whatsapp image loader.
 
 ![Bleach Screenshot](http://i.imgur.com/uhaLVLo.png)
 
-####Dependencies
+#### Dependencies
 - jquery: >=1.10.2
 - PHP: >= 5.2.6
 
